@@ -1,0 +1,84 @@
+@import "tailwindcss";
+
+:root {
+  /* Default (Blossom) */
+  --theme-bg: #fdf2f8;
+  --theme-border: #fbcfe8;
+  --theme-accent: #f472b6;
+  --theme-text: #831843;
+  --theme-calendar-bg: rgba(255, 255, 255, 0.85);
+}
+
+[data-theme="dreamy"] {
+  --theme-bg: #f0f9ff;
+  --theme-border: #bae6fd;
+  --theme-accent: #38bdf8;
+  --theme-text: #082f49;
+  --theme-calendar-bg: rgba(255, 255, 255, 0.85);
+}
+
+[data-theme="peach"] {
+  --theme-bg: #fff7ed;
+  --theme-border: #fed7aa;
+  --theme-accent: #fb923c;
+  --theme-text: #431407;
+  --theme-calendar-bg: rgba(255, 255, 255, 0.9);
+}
+
+[data-theme="night"] {
+  --theme-bg: #1e1b4b;
+  --theme-border: #4338ca;
+  --theme-accent: #818cf8;
+  --theme-text: #e0e7ff;
+  --theme-calendar-bg: rgba(17, 24, 39, 0.8);
+}
+
+[data-theme="study"] {
+  --theme-bg: #f5f5f4;
+  --theme-border: #d6d3d1;
+  --theme-accent: #78716c;
+  --theme-text: #1c1917;
+  --theme-calendar-bg: #ffffff;
+}
+
+@theme inline {
+  --color-theme-bg: var(--theme-bg);
+  --color-theme-border: var(--theme-border);
+  --color-theme-accent: var(--theme-accent);
+  --color-theme-text: var(--theme-text);
+  --color-theme-cal: var(--theme-calendar-bg);
+
+  --font-sans: "Inter", sans-serif;
+  --font-cursive: "Caveat", cursive;
+}
+
+body {
+  background-color: var(--theme-bg);
+  color: var(--theme-text);
+  transition: background-color 0.4s ease, color 0.4s ease;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+/* Glassmorphism utils */
+.glass {
+  background: var(--theme-calendar-bg);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid var(--theme-border);
+}
+
+/* Texture overlay for paper effect */
+.paper-texture {
+  position: relative;
+}
+
+.paper-texture::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.06'/%3E%3C/svg%3E");
+  z-index: 10;
+  border-radius: inherit;
+}
