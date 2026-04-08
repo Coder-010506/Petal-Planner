@@ -13,20 +13,50 @@ const PREMIUM_ELEMENTS = [
   { id: 1, type: "blob", bg: "bg-pink-300", z: -600, x: -30, y: -20, scale: 3, blur: "50px", opacity: 0.5 },
   { id: 2, type: "blob", bg: "bg-purple-200", z: -800, x: 40, y: 30, scale: 4, blur: "60px", opacity: 0.4 },
   { id: 3, type: "emoji", content: "☁️", z: -400, x: -40, y: 35, scale: 8, blur: "6px", opacity: 0.4, rotate: -5 },
+  { id: 13, type: "blob", bg: "bg-rose-200", z: -1000, x: -10, y: 40, scale: 5, blur: "70px", opacity: 0.3 },
+  { id: 14, type: "emoji", content: "☁️", z: -500, x: 35, y: -35, scale: 6, blur: "8px", opacity: 0.3, rotate: 10 },
+  { id: 15, type: "emoji", content: "⭐", z: -700, x: -25, y: -15, scale: 3, blur: "10px", opacity: 0.2, rotate: -20 },
+  { id: 16, type: "shape", shapeType: "glassCard", emoji: "💎", z: -350, x: 45, y: -20, rotate: 15, scale: 0.8, opacity: 0.4 },
+  { id: 17, type: "blob", bg: "bg-indigo-300", z: -900, x: -40, y: -40, scale: 4, blur: "55px", opacity: 0.2 },
+  { id: 18, type: "emoji", content: "🌙", z: -450, x: 45, y: 45, scale: 5, blur: "4px", opacity: 0.5, rotate: -10 },
+  { id: 19, type: "emoji", content: "✨", z: -650, x: 10, y: -45, scale: 3.5, blur: "15px", opacity: 0.3, rotate: 25 },
+  { id: 20, type: "blob", bg: "bg-blue-200", z: -750, x: 15, y: 15, scale: 5, blur: "65px", opacity: 0.3 },
 
   // Midground (slightly back or 0)
   { id: 4, type: "quote", content: "embrace the journey", z: -100, x: 25, y: -30, rotate: 6, scale: 1.5, opacity: 0.9 },
   { id: 5, type: "shape", shapeType: "polaroid", emoji: "🌸", label: "memories", z: 50, x: -28, y: 15, rotate: -12, scale: 1.2 },
   { id: 6, type: "note", content: "breathe in, breathe out.", z: 0, x: 30, y: 25, rotate: 12, scale: 1 },
   { id: 7, type: "emoji", content: "🦋", z: 100, x: 15, y: -10, scale: 4, blur: "1px", opacity: 0.8, rotate: -15 },
+  { id: 21, type: "quote", content: "trust the process", z: -50, x: -35, y: 25, rotate: -8, scale: 1.2, opacity: 0.8 },
+  { id: 22, type: "shape", shapeType: "polaroid", emoji: "📸", label: "snapshots", z: 80, x: 22, y: 40, rotate: 18, scale: 0.9 },
+  { id: 23, type: "emoji", content: "🌸", z: -20, x: -15, y: -25, scale: 4.5, blur: "2px", opacity: 0.85, rotate: 5 },
+  { id: 24, type: "emoji", content: "🕊️", z: 60, x: -45, y: -15, scale: 3.5, blur: "0px", opacity: 0.9, rotate: 15 },
+  { id: 25, type: "note", content: "you are enough.", z: 120, x: -18, y: 35, rotate: -6, scale: 0.8 },
+  { id: 26, type: "emoji", content: "🌷", z: 40, x: 42, y: -5, scale: 4, blur: "3px", opacity: 0.7, rotate: -25 },
+  { id: 27, type: "quote", content: "find your peace", z: -150, x: -5, y: 38, rotate: 4, scale: 1.6, opacity: 0.7 },
+  { id: 28, type: "shape", shapeType: "glassCard", emoji: "🧿", z: 20, x: -45, y: 5, rotate: 8, scale: 0.7 },
+  { id: 29, type: "emoji", content: "🤍", z: -80, x: 5, y: -45, scale: 2.8, blur: "1px", opacity: 0.6, rotate: -12 },
+  { id: 30, type: "note", content: "small steps.", z: 90, x: 35, y: -42, rotate: 15, scale: 0.9 },
 
   // Foreground (pop out into camera)
   { id: 8, type: "emoji", content: "✨", z: 300, x: -10, y: -40, scale: 2.5, blur: "0px", opacity: 0.9, rotate: 0 },
-  { id: 9, type: "shape", shapeType: "glassCard", z: 400, x: 35, y: 5, rotate: -5, scale: 1.1 },
+  { id: 9, type: "shape", shapeType: "glassCard", emoji: "🌿", z: 400, x: 35, y: 5, rotate: -5, scale: 1.1 },
   { id: 10, type: "quote", content: "your aesthetic space", z: 200, x: -35, y: -25, rotate: -5, scale: 1.4, opacity: 0.9 },
   { id: 11, type: "emoji", content: "💖", z: 450, x: -20, y: 45, scale: 3, blur: "0px", opacity: 1, rotate: 15 },
   { id: 12, type: "emoji", content: "🎀", z: 350, x: 5, y: 40, scale: 2.5, blur: "0px", opacity: 0.9, rotate: -8 },
+  { id: 31, type: "emoji", content: "🍓", z: 250, x: 25, y: -25, scale: 3.5, blur: "0px", opacity: 0.95, rotate: 20 },
+  { id: 32, type: "shape", shapeType: "polaroid", emoji: "💌", label: "letters", z: 280, x: -42, y: 20, rotate: 12, scale: 1 },
+  { id: 33, type: "emoji", content: "🍒", z: 500, x: 40, y: 35, scale: 2.2, blur: "0px", opacity: 1, rotate: -15 },
+  { id: 34, type: "quote", content: "romanticize your life", z: 180, x: 15, y: 45, rotate: -3, scale: 1.3, opacity: 0.95 },
+  { id: 35, type: "emoji", content: "🧁", z: 380, x: -30, y: -5, scale: 3.2, blur: "0px", opacity: 0.9, rotate: 8 },
+  { id: 36, type: "note", content: "stay golden.", z: 220, x: -15, y: -45, rotate: -10, scale: 0.8 },
+  { id: 37, type: "emoji", content: "🐾", z: 320, x: 45, y: -40, scale: 2.6, blur: "0px", opacity: 0.85, rotate: -22 },
+  { id: 38, type: "shape", shapeType: "glassCard", emoji: "🎨", z: 420, x: -8, y: 25, rotate: -18, scale: 0.85 },
+  { id: 39, type: "emoji", content: "🌱", z: 270, x: -48, y: -35, scale: 3, blur: "0px", opacity: 0.9, rotate: 5 },
+  { id: 40, type: "quote", content: "bloom.", z: 460, x: 28, y: -8, rotate: 14, scale: 1.7, opacity: 1 }
 ];
+
+const ITEM_SCALE_FACTOR = 0.55;
 
 export default function LandingPage() {
   const router = useRouter();
@@ -84,7 +114,7 @@ export default function LandingPage() {
     if (hasStarted || item.type === 'blob') return;
     
     gsap.to(e.currentTarget, {
-      scale: item.scale * 1.15,
+      scale: item.scale * ITEM_SCALE_FACTOR * 1.15,
       z: item.z + 150, 
       rotationZ: item.rotate + (Math.random() * 10 - 5),
       filter: "drop-shadow(0px 30px 40px rgba(0,0,0,0.15))",
@@ -96,7 +126,7 @@ export default function LandingPage() {
   const handleMouseLeave = (e, item) => {
     if (hasStarted || item.type === 'blob') return;
     gsap.to(e.currentTarget, {
-      scale: item.scale,
+      scale: item.scale * ITEM_SCALE_FACTOR,
       z: item.z,
       rotationZ: item.rotate,
       filter: "drop-shadow(0px 10px 15px rgba(0,0,0,0.05))",
@@ -189,7 +219,7 @@ export default function LandingPage() {
             style={{
               left: `calc(50% + ${item.x}%)`,
               top: `calc(50% + ${item.y}%)`,
-              transform: `translate(-50%, -50%) translateZ(${item.z}px) rotateZ(${item.rotate || 0}deg) scale(${item.scale})`,
+              transform: `translate(-50%, -50%) translateZ(${item.z}px) rotateZ(${item.rotate || 0}deg) scale(${item.scale * ITEM_SCALE_FACTOR})`,
               transformStyle: "preserve-3d",
               filter: item.blur !== "0px" ? `blur(${item.blur})` : "drop-shadow(0px 10px 15px rgba(0,0,0,0.05))"
             }}
@@ -225,7 +255,7 @@ export default function LandingPage() {
 
             {item.type === 'shape' && item.shapeType === 'glassCard' && (
               <div className="w-64 h-64 glass rounded-[2.5rem] flex items-center justify-center border border-white/60">
-                 <span className="text-[6rem]">🌿</span>
+                 <span className="text-[6rem]">{item.emoji || "🌿"}</span>
               </div>
             )}
           </div>
