@@ -50,18 +50,28 @@ export default function NotesPanel({ selectedDates }) {
   }, [dateKey, isSingleDate]);
 
   const saveNote = () => {
-    if (note.trim() === "") {
+    const hasNote = note.trim() !== "";
+    if (!hasNote) {
       localStorage.removeItem(`petal-notes-${dateKey}`);
     } else {
       localStorage.setItem(`petal-notes-${dateKey}`, note);
     }
     setIsEditing(false);
+    
+    // Notify grid for dot notation
+    window.dispatchEvent(new CustomEvent('petal-note-updated', {
+      detail: { date: dateKey, hasNote: hasNote }
+    }));
   };
 
   const deleteNote = () => {
     localStorage.removeItem(`petal-notes-${dateKey}`);
     setNote("");
     setIsEditing(true);
+
+    window.dispatchEvent(new CustomEvent('petal-note-updated', {
+      detail: { date: dateKey, hasNote: false }
+    }));
   };
 
   const updateMood = (m) => {

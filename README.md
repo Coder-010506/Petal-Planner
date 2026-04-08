@@ -7,6 +7,9 @@ A premium, cinematic 3D scrapbook and journal experience. Petal Planner replaces
 - **3D Memory Wall**: An interactive masonry layout with deep parallax and 3D transforms.
 - **Cinematic Interactions**: Smooth animations powered by GSAP and Framer Motion.
 - **Immersive Parallax & Hover Effects**: Magnetic elements and custom cursor tracking that make the application feel alive.
+- **Versatile Calendar Views**: Seamlessly switch between Monthly (grid), Yearly (heatmap), and Agenda (timeline feed) view modes.
+- **Activity & Heatmap Tracking**: Calendar days intelligently light up with distinct color notations when you log notes and emotions, creating a beautiful record of your journey.
+- **Aesthetic Themes**: Toggle between diverse visual templates (Blossom, Dreamy Sky, Peach Pastel, Night Aesthetic, and Study Journal) that provide full CSS gradient backgrounds and unique interactive styling.
 - **Modern Tech Stack**: Built with Next.js App Router, React, and Tailwind CSS.
 - **Responsive Design**: Carefully crafted for various screen sizes while maintaining the premium 3D feel.
 

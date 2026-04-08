@@ -3,6 +3,7 @@
 :root {
   /* Default (Blossom) */
   --theme-bg: #fdf2f8;
+  --theme-bg-pattern: radial-gradient(at 100% 0%, rgba(253, 164, 175, 0.15) 0px, transparent 50%), radial-gradient(at 0% 100%, rgba(244, 114, 182, 0.15) 0px, transparent 50%);
   --theme-border: #fbcfe8;
   --theme-accent: #f472b6;
   --theme-text: #831843;
@@ -11,6 +12,7 @@
 
 [data-theme="dreamy"] {
   --theme-bg: #f0f9ff;
+  --theme-bg-pattern: radial-gradient(at 0% 0%, rgba(186, 230, 253, 0.2) 0px, transparent 50%), radial-gradient(at 100% 100%, rgba(125, 211, 252, 0.2) 0px, transparent 50%);
   --theme-border: #bae6fd;
   --theme-accent: #38bdf8;
   --theme-text: #082f49;
@@ -19,6 +21,7 @@
 
 [data-theme="peach"] {
   --theme-bg: #fff7ed;
+  --theme-bg-pattern: radial-gradient(at 50% 0%, rgba(254, 215, 170, 0.2) 0px, transparent 50%), radial-gradient(at 50% 100%, rgba(253, 186, 116, 0.2) 0px, transparent 50%);
   --theme-border: #fed7aa;
   --theme-accent: #fb923c;
   --theme-text: #431407;
@@ -27,6 +30,8 @@
 
 [data-theme="night"] {
   --theme-bg: #1e1b4b;
+  --theme-bg-pattern: radial-gradient(2px 2px at 20px 30px, #ffffff, rgba(0,0,0,0)), radial-gradient(2px 2px at 40px 70px, #ffffff, rgba(0,0,0,0)), radial-gradient(2px 2px at 50px 160px, #ffffff, rgba(0,0,0,0)), radial-gradient(2px 2px at 90px 40px, #ffffff, rgba(0,0,0,0)), radial-gradient(2px 2px at 130px 80px, #ffffff, rgba(0,0,0,0)), radial-gradient(2px 2px at 160px 120px, #ffffff, rgba(0,0,0,0));
+  background-size: 200px 200px;
   --theme-border: #4338ca;
   --theme-accent: #818cf8;
   --theme-text: #e0e7ff;
@@ -35,6 +40,8 @@
 
 [data-theme="study"] {
   --theme-bg: #f5f5f4;
+  --theme-bg-pattern: linear-gradient(rgba(0, 0, 0, 0.05) 1px, transparent 1px), linear-gradient(90deg, rgba(0, 0, 0, 0.05) 1px, transparent 1px);
+  background-size: 40px 40px, 40px 40px;
   --theme-border: #d6d3d1;
   --theme-accent: #78716c;
   --theme-text: #1c1917;
@@ -54,6 +61,7 @@
 
 body {
   background-color: var(--theme-bg);
+  background-image: var(--theme-bg-pattern);
   color: var(--theme-text);
   transition: background-color 0.4s ease, color 0.4s ease;
   min-height: 100vh;

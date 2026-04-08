@@ -28,11 +28,11 @@ const flipVariants = {
   })
 };
 
-export default function CalendarGrid({ selectedDates, setSelectedDates }) {
-  const [currentMonth, setCurrentMonth] = useState(new Date());
+export default function CalendarGrid({ selectedDates, setSelectedDates, currentMonth, setCurrentMonth }) {
   const [direction, setDirection] = useState(0);
   const [hoveredDay, setHoveredDay] = useState(null);
   const [moodMap, setMoodMap] = useState({});
+  const [noteMap, setNoteMap] = useState({});
 
   const monthStart = startOfMonth(currentMonth);
   const monthEnd = endOfMonth(monthStart);
@@ -43,25 +43,70 @@ export default function CalendarGrid({ selectedDates, setSelectedDates }) {
 
   useEffect(() => {
     // Initial fetch on month change
-    const newMap = {};
+    const newMoodMap = {};
+    const newNoteMap = {};
+    
+    const rangeNotes = [];
+    for (let i = 0; i < localStorage.length; i++) {
+      const key = localStorage.key(i);
+      if (key?.startsWith('petal-notes-')) {
+        const d = key.replace('petal-notes-', '');
+        if (d.includes('_')) {
+          const [s, e] = d.split('_');
+          rangeNotes.push({ s, e });
+        } else {
+          newNoteMap[d] = 'single';
+        }
+      }
+    }
+
     days.forEach(day => {
       const d = format(day, "yyyy-MM-dd");
       try {
         const m = localStorage.getItem(`petal-mood-${d}`);
-        if (m) newMap[d] = JSON.parse(m);
+        if (m) newMoodMap[d] = JSON.parse(m);
       } catch(e) {}
+      
+      if (!newNoteMap[d]) {
+        for (let r of rangeNotes) {
+          if (d >= r.s && d <= r.e) {
+            newNoteMap[d] = 'range';
+            break;
+          }
+        }
+      }
     });
-    setMoodMap(newMap);
+
+    setMoodMap(newMoodMap);
+    setNoteMap(newNoteMap);
 
     const handleMood = (e) => {
       const { date, mood } = e.detail;
-      setMoodMap(prev => ({
-        ...prev,
-        [date]: mood
-      }));
+      setMoodMap(prev => ({ ...prev, [date]: mood }));
     };
+    const handleNote = (e) => {
+      const { date, hasNote } = e.detail;
+      setNoteMap(prev => {
+        const next = { ...prev };
+        if (date.includes('_')) {
+          const [s, eDate] = date.split('_');
+          days.forEach(day => {
+            const d = format(day, "yyyy-MM-dd");
+            if (d >= s && d <= eDate) next[d] = hasNote ? 'range' : false;
+          });
+        } else {
+          next[date] = hasNote ? 'single' : false;
+        }
+        return next;
+      });
+    };
+    
     window.addEventListener('petal-mood-updated', handleMood);
-    return () => window.removeEventListener('petal-mood-updated', handleMood);
+    window.addEventListener('petal-note-updated', handleNote);
+    return () => {
+      window.removeEventListener('petal-mood-updated', handleMood);
+      window.removeEventListener('petal-note-updated', handleNote);
+    };
   }, [currentMonth]); // Perfectly stable
 
   const nextMonth = () => {
@@ -165,6 +210,7 @@ export default function CalendarGrid({ selectedDates, setSelectedDates }) {
               const hovered = hoveredDay === dateStr;
               
               const dayMood = moodMap[dateStr];
+              const noteType = noteMap[dateStr];
 
               const showConnectorLeft = isEnd || isBetween;
               const showConnectorRight = isStart || isBetween;
@@ -172,7 +218,7 @@ export default function CalendarGrid({ selectedDates, setSelectedDates }) {
               return (
                 <div 
                   key={day.toString()} 
-                  className="relative flex items-center justify-center h-12 md:h-16"
+                  className="relative flex flex-col items-center justify-center h-12 md:h-16"
                   onMouseEnter={() => setHoveredDay(dateStr)}
                   onMouseLeave={() => setHoveredDay(null)}
                 >
@@ -223,6 +269,19 @@ export default function CalendarGrid({ selectedDates, setSelectedDates }) {
                        </motion.div>
                     )}
                   </motion.button>
+                  
+                  {noteType && (
+                    <motion.div 
+                      initial={{ scale: 0 }}
+                      animate={{ scale: 1 }}
+                      className={cn(
+                        "absolute bottom-0 md:-bottom-1 w-1.5 h-1.5 rounded-full z-20 pointer-events-none",
+                        noteType === 'range'
+                          ? "bg-green-500 shadow-[0_0_8px_rgba(34,197,94,0.8)]"
+                          : "bg-[var(--theme-accent)] shadow-[0_0_8px_var(--theme-accent)]"
+                      )}
+                    />
+                  )}
                 </div>
               );
             })}
